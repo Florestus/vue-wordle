@@ -4,7 +4,14 @@ import { getWordOfTheDay, allWords } from './words'
 import Keyboard from './Keyboard.vue'
 import { LetterState } from './types'
 
+function sendScore(score: number) {
+  // (optionnel) récupère l’uid passé en query pour identifier l’utilisateur
+  const uid = new URLSearchParams(window.location.search).get('uid') ?? ''
+  window.location.href =
+    `https://kawaaa.glide.page/submit-score?uid=${uid}&pts=${score}`
+}
 // Get word of the day
+  
 const answer = getWordOfTheDay()
 
 // Board state. Each tile is represented as { letter, state }
